@@ -3,6 +3,8 @@ const hbs = require('hbs');
 const os = require('os');
 
 
+const port = process.env.PORT || 3000
+
 var app = express();
 
 hbs.registerPartials(__dirname + '/views/partials')
@@ -10,13 +12,13 @@ app.set('view engine','hbs');
 
 
 
-app.use((req,res,next)=>{
-	res.render('demo.hbs');
+// app.use((req,res,next)=>{
+// 	res.render('demo.hbs');
 		
-	console.log('inside demo');
+// 	console.log('inside demo');
 	
-	// next();
-});
+// 	// next();
+// });
 
 
 app.use(express.static(__dirname + '/public'));
@@ -51,4 +53,5 @@ app.get('/bad',(req,res)=>{
 	});
 });
 
-app.listen(3000);
+app.listen(port);
+console.log(`server is up on ${port}`);
